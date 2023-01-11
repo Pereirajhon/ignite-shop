@@ -1,14 +1,17 @@
 import {styled} from '@stitches/react';
 
 export const Container = styled('div',{
-	display: 'flex',
-	flexDirection: 'column',
-	alignItems: 'flex-start',
-	justifyContent: 'center',
-	minHeight: '100vh',
-
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    justifyContent: 'center',
+    minHeight: '100vh',
+    
 });
 
 export const Header = styled('header', {
-    
+    width: '100%',
+    maxWidth: 1180,
+    margin: '0 auto',
+    padding: '2rem 0',
 });
