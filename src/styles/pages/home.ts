@@ -5,13 +5,10 @@ export const HomeContainer = styled('main', {
     width: '100%',
     maxWidth: 'calc(100vw - (100vw - 1180px) /2)',
     marginLeft: 'auto',
-    minHeight: 520,
-    border: '1px solid red',
-    //overflow: 'hidden',
+    minHeight: 600,
 });
 
 export const Product = styled('div',{
-
     background: 'linear-gradient(100deg, #1ea483 0%, #7465d5 100% )',
     borderRadius: 8,
     position: 'relative',
@@ -33,7 +30,7 @@ export const Product = styled('div',{
         right: 0,
         bottom: 0,
         margin: '0.25rem',
-        padding: '1.25rem',
+        padding: '1rem',
         borderRadius: 6,
         transform: 'transtaleY(110%)',
         transition: 'all 0.2s ease in out',
@@ -44,13 +41,13 @@ export const Product = styled('div',{
 
         strong: {
             color: '$green500',
-            fontWeight: 'bold',
-            fontSize: '$xl'
+            fontWeight: '600',
+            fontSize: '$lg'
         },
         
         span: {
             fontWeight: 'bold',
-            fontSize: '$lg'
+            fontSize: '$md'
         },         
     },
     '&:hover': {

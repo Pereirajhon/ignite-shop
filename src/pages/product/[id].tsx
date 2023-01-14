@@ -2,7 +2,7 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Stripe from 'stripe';
 import { stripe } from '../../lib/stripe';
-import { ProductContainer, ImageContainer, ProductDetails } from '../../styles/pages/product';
+import { ProductContainer, ImageContainer, ProductDetails, Button } from '../../styles/pages/product';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 
@@ -29,15 +29,14 @@ const Product = ({product}: HomeProps) => {
     return(
         <ProductContainer>
             <ImageContainer>
-                <Image src={product.imageUrl} width={520} height={480} alt='' />
+                <Image src={product.imageUrl} width={440} height={480} alt='' />
             </ImageContainer>
             <ProductDetails>
-                <h1>
-                    {product.name}
-                </h1>
-                <p>
-                    {product.description}
-                </p>
+                <h1> {product.name} </h1>
+                <strong>{product.price}</strong>
+                <p> {product.description} </p>
+
+                <Button type='button'> Comprar agora </Button>
             </ProductDetails>
         </ProductContainer>
     );   
