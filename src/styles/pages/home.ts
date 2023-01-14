@@ -7,10 +7,10 @@ export const HomeContainer = styled('main', {
     marginLeft: 'auto',
     minHeight: 520,
     border: '1px solid red',
-    overflow: 'none'
+    //overflow: 'hidden',
 });
 
-export const Product = styled('a',{
+export const Product = styled('div',{
 
     background: 'linear-gradient(100deg, #1ea483 0%, #7465d5 100% )',
     borderRadius: 8,
