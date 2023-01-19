@@ -5,6 +5,9 @@ import { stripe } from '../../lib/stripe';
 import { ProductContainer, ImageContainer, ProductDetails, Button } from '../../styles/pages/product';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
+import {useState} from 'react';
+import axios from 'axios';
+
 
 interface HomeProps {
     product: {
@@ -12,11 +15,13 @@ interface HomeProps {
         name: string,
         imageUrl: string,
         price: string,
-        description: string
+        description: string,
+        defaultPriceId: string,
     }
 }
 
 const Product = ({product}: HomeProps) => {
+    const [isCheckoutSession, setIsCheckoutSession] = useState(false);
 
     const {isFallback } = useRouter();
 
@@ -24,6 +29,24 @@ const Product = ({product}: HomeProps) => {
        return(
          <p>Loading...</p>  
        );
+    }
+
+    async function handlePay(){
+        try {
+            setIsCheckoutSession(true);
+
+            const response = await axios.post('/api/checkout',{
+                priceId: product.defaultPriceId
+            });
+
+            const {checkoutSession} = response.data;
+            window.location.href = checkoutSession;
+
+        } catch(error){
+            setIsCheckoutSession(false);
+            console.error(error);
+        }
+
     }
 
     return(
@@ -35,8 +58,12 @@ const Product = ({product}: HomeProps) => {
                 <h1> {product.name} </h1>
                 <strong>{product.price}</strong>
                 <p> {product.description} </p>
-
-                <Button type='button'> Comprar agora </Button>
+                <Button
+                 type='button'
+                 disabled={isCheckoutSession === true}
+                 onClick={() => handlePay()} >
+                    Comprar agora
+                </Button>
             </ProductDetails>
         </ProductContainer>
     );   
@@ -47,7 +74,7 @@ export default Product;
 export const getStaticPaths:GetStaticPaths = async() => {
     return{
         paths: [],
-        fallback: true
+        fallback: true,
     };
 };
 
@@ -72,7 +99,8 @@ export const getStaticProps:GetStaticProps = async({params} ) => {
                     style: 'currency',
                     currency: 'BRL'
                 }).format(priceUnitAmount / 100),
-                description: product.description
+                description: product.description,
+                defaultPriceId: price.id,
             }
         }
     };

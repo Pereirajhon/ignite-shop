@@ -47,7 +47,8 @@ export const Product = styled('div',{
         
         span: {
             fontWeight: 'bold',
-            fontSize: '$md'
+            fontSize: '$md',
+            color: '$gray100'
         },         
     },
     '&:hover': {

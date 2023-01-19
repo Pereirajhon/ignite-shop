@@ -5,42 +5,47 @@ export const ProductContainer = styled('main',{
     width: '100%',
     margin: '0 auto',
     display: 'grid',
+    justifyContent: 'center',
     gridTemplateColumns: '1fr 1fr',
     alignItems: 'stretch',
+    gap: '3rem',
 
 });
 
 export const ImageContainer = styled('div',{
     background: 'linear-gradient(100deg, #1ea483 0%, #7465d5 100% )',
     borderRadius: 8,
+    maxWidth: 546,
+    width: '100%',
+    height: 566,
+
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
     img: {
-        display: 'block',
-        margin: 'auto'
+        objectFit: 'cover',
     }
 
 });
 
 export const ProductDetails = styled('div',{
-    border: '1px solid green',
-    padding: '0 2rem',
     display: 'flex',
     flexDirection: 'column',
-    gap: '1.5rem',
+    gap: '1.4rem',
 
     h1: {
-        marginTop: '1rem',
+        marginTop: '1.5rem',
     },
 
     strong: {
         color: '$green500',
         fontSize: '$2xl',
-        fontWeight: '600',
+        fontWeight: '400',
     },
 
     p: {
         color: '$gray300',
-        fontSize: '1rem',
-        lineHeight: 1.5,
+        lineHeight: 1.65,
     }
     
 });
@@ -49,7 +54,7 @@ export const Button = styled('button', {
     marginTop: 'auto',
     padding: '1.4rem',
     backgroundColor: '$green300',
-    color: '$gray100',
+    color: '$gray400',
     borderRadius: 8,
     border: 'none',
     fontSize: '$lg',
@@ -57,5 +62,11 @@ export const Button = styled('button', {
 
     '&:hover': {
         filter: 'brightness(0.9)',
+    },
+
+    '&:disabled' : {
+        opacity: 0.5,
+        cursor: 'not-allowed'
     }
+
 });
